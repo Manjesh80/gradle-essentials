@@ -1,0 +1,102 @@
+println "Ganesh -- 1"
+project.apply([plugin: 'java'])
+
+/*apply plugin: 'java'*/
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+println "Ganesh -- 2"
+archivesBaseName = "jai-ganesh"
+distributions.main.baseName = 'jai-ganesh-basename'
+
+mainClassName = "com.manjesh.gradle.Main"
+run.args = ["Jai Ganesh"]
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url "http://mavencentral.it.att.com:8084/nexus/content/groups/att-public-group"
+    }
+    maven {
+        url "http://mavencentral.it.att.com:8084/nexus/content/groups/2020SAPC"
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+println '******** START ************'
+println project.path
+println project.name
+println project.path
+println '******** END ************'
+
+
+task takitik() {
+    doLast {
+        println "takitik"
+    }
+}
+
+task copyFiles(type: Copy) {
+    from file("from")
+    into file("to")
+}
+
+task takatak(dependsOn: takitik) {
+    doLast {
+        println "takatak"
+    }
+}
+
+task tumtuk(dependsOn: [takatak, takitik]) {
+    doLast {
+        println "Dim tak"
+    }
+}
+
+tumtuk.doLast({
+    println "Dim tak tak tak"
+})
+
+task finalRoutines {
+    doLast {
+        println " ** finalRoutines **"
+    }
+}
+
+tumtuk.finalizedBy finalRoutines
+
+finalRoutines.onlyIf {
+    true
+}
+
+defaultTasks "tumtuk"
+
+
+class Print extends DefaultTask {
+    @Input
+    String message = "Welcome to Gradle"
+
+    @TaskAction
+    def print() {
+        println "$message"
+    }
+}
+
+task welcome(type: Print)
+
+task thanks(type: Print) {
+    message = "Thanks for trying custom tasks"
+}
+
+task bye(type: Print)
+bye.message = "See you again"
+
+
+thanks.dependsOn welcome
+thanks.finalizedBy bye
+

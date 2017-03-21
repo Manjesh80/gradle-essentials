@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.manjesh.gradle.GreetingServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-03-20T17:23:36" hostname="NJCDTL01MG153V" time="0.001">
+  <properties/>
+  <testcase name="testGreet" classname="com.manjesh.gradle.GreetingServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

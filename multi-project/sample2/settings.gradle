@@ -1,0 +1,8 @@
+include 'core',
+  'core:models', 'core:repository', 'core:services',
+  'client', 'client:client-api',
+  'client:cli-client', 'client:desktop-client',
+  'web', 'web:webapp', 'web:webservices'
+
+
+

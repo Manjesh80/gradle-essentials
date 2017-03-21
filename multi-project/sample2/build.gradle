@@ -1,0 +1,21 @@
+// use this example project by starting with gradle tasks
+// execute those tasks and see their definitions
+
+task sayHello {
+  doLast {
+    println "Hello from multi-project build"
+  }
+}
+
+allprojects {
+  task whoAmI  {
+    doLast {
+      println "I am ${project.name}"
+    }
+  }
+}
+
+dependencies {
+  compile project('core:services')
+}
+

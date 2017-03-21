@@ -1,0 +1,13 @@
+apply plugin: 'war'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+task aTaskThatOnlyWebAppHas << {
+  println "A task that only web app has"
+}
